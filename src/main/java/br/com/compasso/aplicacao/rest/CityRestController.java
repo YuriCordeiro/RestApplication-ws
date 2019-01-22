@@ -3,10 +3,11 @@ package br.com.compasso.aplicacao.rest;
 import br.com.compasso.aplicacao.dto.CityDTO;
 import br.com.compasso.aplicacao.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -26,8 +27,8 @@ public class CityRestController {
      * @return a list of cities
      */
     @RequestMapping("/all")
-    public List<CityDTO> findAllCities() {
-        return cityService.findAllCities();
+    public @ResponseBody ResponseEntity<Object> findAllCities() {
+        return new ResponseEntity<>(cityService.findAllCities(), HttpStatus.OK);
     }
 
     /**
@@ -37,8 +38,8 @@ public class CityRestController {
      */
     @RequestMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = POST)
-    public @ResponseBody CityDTO insertCity(@RequestBody CityDTO cityDTO) {
-        return cityService.insertNewCity(cityDTO);
+    public @ResponseBody ResponseEntity<Object> insertCity(@RequestBody CityDTO cityDTO) {
+        return new ResponseEntity<>(cityService.insertNewCity(cityDTO), HttpStatus.CREATED);
     }
 
     /**
@@ -48,8 +49,8 @@ public class CityRestController {
      * @return a list of cities
      */
     @RequestMapping(value = "/findByName/{cityName}")
-    public @ResponseBody List<CityDTO> findCitiesByName(@PathVariable String cityName) {
-        return cityService.findCitiesByName(cityName);
+    public @ResponseBody ResponseEntity<Object> findCitiesByName(@PathVariable String cityName) {
+        return new ResponseEntity<>(cityService.findCitiesByName(cityName), HttpStatus.OK);
     }
 
     /**
@@ -59,8 +60,8 @@ public class CityRestController {
      * @return a list of cities
      */
     @RequestMapping(value = "/findByProvince/{province}")
-    public @ResponseBody List<CityDTO> findCitiesByProvince(@PathVariable String province) {
-        return cityService.findCitiesByProvince(province);
+    public @ResponseBody ResponseEntity<Object> findCitiesByProvince(@PathVariable String province) {
+        return new ResponseEntity<>(cityService.findCitiesByProvince(province), HttpStatus.OK);
     }
 
 }

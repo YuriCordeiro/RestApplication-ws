@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CityRepository extends JpaRepository<CityDTO, Integer> {
 
-    List<CityDTO> findByName(String name);
+    List<CityDTO> findByNameIgnoreCase(String name);
 
-    List<CityDTO> findByProvince(String province);
+    List<CityDTO> findByProvinceIgnoreCase(String province);
 }

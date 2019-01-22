@@ -26,11 +26,11 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<CityDTO> findCitiesByName(String name) {
-        return cityRepository.findByName(name);
+        return cityRepository.findByNameIgnoreCase(name);
     }
 
     @Override
     public List<CityDTO> findCitiesByProvince(String province) {
-        return cityRepository.findByProvince(province);
+        return cityRepository.findByProvinceIgnoreCase(province);
     }
 }

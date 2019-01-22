@@ -29,8 +29,8 @@ public class CostumerRestController {
      * @return formatted json
      */
     @RequestMapping(value = "/all", method = GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<CostumerDTO> findAllCostumers() {
-        return costumerService.findAllCostumers();
+    public @ResponseBody ResponseEntity<Object> findAllCostumers() {
+        return new ResponseEntity<>(costumerService.findAllCostumers(), HttpStatus.OK);
     }
 
     /**
@@ -40,9 +40,8 @@ public class CostumerRestController {
      */
     @RequestMapping(value = "/insert", method = POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public @ResponseBody
-    ResponseEntity<CostumerDTO> insertNewCostumer(@RequestBody CostumerDTO costumerDTO) {
-        return new ResponseEntity<>(costumerService.insertNewCostumer(costumerDTO), HttpStatus.OK);
+    public @ResponseBody ResponseEntity<CostumerDTO> insertNewCostumer(@RequestBody CostumerDTO costumerDTO) {
+        return new ResponseEntity<>(costumerService.insertNewCostumer(costumerDTO), HttpStatus.CREATED);
     }
 
     /**
@@ -52,8 +51,8 @@ public class CostumerRestController {
      * @return
      */
     @RequestMapping(value = "/findByCompleteName/{costumerName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public @ResponseBody List<CostumerDTO> findCostumerByName(@PathVariable String costumerName) {
-        return costumerService.findCostumerByCompleteName(costumerName);
+    public @ResponseBody ResponseEntity<Object> findCostumerByName(@PathVariable String costumerName) {
+        return new ResponseEntity<>(costumerService.findCostumerByCompleteName(costumerName), HttpStatus.OK);
     }
 
     /**
@@ -63,8 +62,8 @@ public class CostumerRestController {
      * @return list of costumers
      */
     @RequestMapping(value="/findByNameContaining/{costumersNamePart}")
-    public @ResponseBody List<CostumerDTO> findCostumerByNameLike(@PathVariable String costumersNamePart){
-        return costumerService.findCostumersByNameContaining(costumersNamePart);
+    public @ResponseBody ResponseEntity<Object> findCostumerByNameLike(@PathVariable String costumersNamePart){
+        return new ResponseEntity<>(costumerService.findCostumersByNameContaining(costumersNamePart), HttpStatus.OK);
     }
 
     /**
@@ -74,8 +73,8 @@ public class CostumerRestController {
      * @return a costumer
      */
     @RequestMapping(value = "/findById/{costumerId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public @ResponseBody Optional<CostumerDTO> findCostumerById(@PathVariable Integer costumerId) {
-        return costumerService.findCostumerById(costumerId);
+    public @ResponseBody ResponseEntity<Object> findCostumerById(@PathVariable Integer costumerId) {
+        return new ResponseEntity<>(costumerService.findCostumerById(costumerId), HttpStatus.OK);
     }
 
     /**
@@ -98,8 +97,8 @@ public class CostumerRestController {
      * @return uodated object
      */
     @RequestMapping(value = "/update/{costumerId}/{costumerName}",  method = PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public @ResponseBody Optional<CostumerDTO> updateCostumerName(@PathVariable Integer costumerId, @PathVariable String costumerName) {
-        return costumerService.updateCostumersName(costumerName, costumerId);
+    public @ResponseBody ResponseEntity<Object> updateCostumerName(@PathVariable Integer costumerId, @PathVariable String costumerName) {
+        return new ResponseEntity<>(costumerService.updateCostumersName(costumerName, costumerId), HttpStatus.ACCEPTED);
     }
 
 

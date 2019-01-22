@@ -16,4 +16,4 @@ insert into TB_COSTUMER (ID, COMPLETENAME, GENDER, BIRTHDATE, AGE, CITY_ID)
 values(SEQ_COSTUMER.NEXTVAL, 'Aline Murback', 'Feminino', TO_DATE('11/12/1994', 'DD/MM/YYYY'), 24, 1);
 
 insert into TB_COSTUMER (ID, COMPLETENAME, GENDER, BIRTHDATE, AGE, CITY_ID)
-values(SEQ_COSTUMER.NEXTVAL, 'Thomas Murback', 'Feminino', TO_DATE('11/12/1970', 'DD/MM/YYYY'), 48, 3);
+values(SEQ_COSTUMER.NEXTVAL, 'Thomas Murback', 'Masculino', TO_DATE('11/12/1970', 'DD/MM/YYYY'), 48, 3);

@@ -57,6 +57,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <finalName>RestApplication-WS</finalName>
     </build>
 
 </project>
