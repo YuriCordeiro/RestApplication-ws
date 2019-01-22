@@ -27,7 +27,7 @@ public interface CostumerRepository extends JpaRepository<CostumerDTO, Integer> 
     /**
      * Should find a costumer by id and updates <code>completeName</code>
      *
-     * @param costumerName costumer's new name
+     * @param completeName costumer's new name
      * @param costumerId   costumer's id
      * @return a costumer
      */
@@ -41,7 +41,15 @@ public interface CostumerRepository extends JpaRepository<CostumerDTO, Integer> 
      * @param namePart part of costumer's name
      * @return a list of costumers
      */
-
     List<CostumerDTO> findByCompleteNameContaining(String namePart);
+
+    /**
+     * Should delete a costumer by id
+     *
+     * @param costumerId
+     */
+    @Modifying
+    @Query("delete from CostumerDTO c where c.id = ?1")
+    void deleteById(Integer costumerId);
 
 }

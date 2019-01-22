@@ -232,7 +232,7 @@ It Should build and get your application up to running! (:
                                     }
                                 }
                                 
-`Want to remove a costumer? `
+`Want to update a costumer? `
  
     URL: `http://localhost:8080/api/costumer/update/{costumerId}/{costumerName}`
     URL EXAMPLE: `http://localhost:8080/api/costumer/update/1/Mario`
@@ -250,3 +250,11 @@ It Should build and get your application up to running! (:
                                     "province": "SP"
                                 }
                             }
+                            
+                            
+`Want to remove a costumer? `
+ 
+    URL: `http://localhost:8080/api/costumer/remove/{costumerIdParam}/`
+    URL EXAMPLE: `http://localhost:8080/api/costumer/remove/1`
+    METHOD: DELETE
+    EXPECTED STATUS_CODE: 200

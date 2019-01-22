@@ -79,10 +79,7 @@ public class CostumerServiceImpl implements CostumerService {
      */
     @Override
     public void removeCostumer(Integer costumerId) {
-        Optional<CostumerDTO> costumer = findCostumerById(costumerId);
-        if (costumer.isPresent()) {
-            costumerRepository.delete(costumer.get());
-        }
+        costumerRepository.deleteById(costumerId);
     }
 
     /**
