@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * CityDTO it's a Data Transfer Object
+ * CostumerDTO it's a Data Transfer Object
  */
 @Entity
 @Table(name = "TB_COSTUMER")
