@@ -2,7 +2,7 @@ package br.com.compasso.aplicacao.builder;
 
 import br.com.compasso.aplicacao.dto.CityDTO;
 import br.com.compasso.aplicacao.dto.CostumerDTO;
-import br.com.compasso.aplicacao.enums.Sexo;
+import br.com.compasso.aplicacao.enums.Gender;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class CostumerObjectBuilder {
         yuri.setId(1);
         yuri.setCompleteName("Yuri Cordeiro");
         yuri.setAge(22);
-        yuri.setGender(Sexo.Masculino);
+        yuri.setGender(Gender.Masculino);
 
         //Adding some Birth Date to object
         Date yurisBday = new GregorianCalendar(1998, Calendar.MARCH, 12).getTime();
@@ -33,7 +33,7 @@ public class CostumerObjectBuilder {
         isabela.setId(2);
         isabela.setCompleteName("Isabella Lagartera");
         isabela.setAge(20);
-        isabela.setGender(Sexo.Feminino);
+        isabela.setGender(Gender.Feminino);
 
         //Adding some Birth Date to object
         Date isabelasBday = new GregorianCalendar(1998, Calendar.MARCH, 12).getTime();
@@ -46,13 +46,13 @@ public class CostumerObjectBuilder {
         return Arrays.asList(yuri, isabela);
     }
 
-    public static List<CostumerDTO> buildCostumesWithSameCompleteName() {
+    public static List<CostumerDTO> buildCostumersWithSameCompleteName() {
         //Instantiate new Costumer Object
         CostumerDTO yuri = new CostumerDTO();
         yuri.setId(1);
         yuri.setCompleteName("Yuri Cordeiro");
         yuri.setAge(22);
-        yuri.setGender(Sexo.Masculino);
+        yuri.setGender(Gender.Masculino);
 
         //Adding some Birth Date to object
         Date yuriBday = new GregorianCalendar(1996, Calendar.DECEMBER, 11).getTime();
@@ -67,7 +67,7 @@ public class CostumerObjectBuilder {
         yuriCordeiro.setId(2);
         yuriCordeiro.setCompleteName("Yuri Cordeiro");
         yuriCordeiro.setAge(32);
-        yuriCordeiro.setGender(Sexo.Masculino);
+        yuriCordeiro.setGender(Gender.Masculino);
 
         //Adding some Birth Date to object
         Date yuriCordeirosBday = new GregorianCalendar(1986, Calendar.DECEMBER, 11).getTime();
@@ -86,7 +86,7 @@ public class CostumerObjectBuilder {
         paula.setId(1);
         paula.setCompleteName("Paula Mancuso");
         paula.setAge(20);
-        paula.setGender(Sexo.Feminino);
+        paula.setGender(Gender.Feminino);
 
         //Adding some Birth Date to object
         Date paulasBday = new GregorianCalendar(1998, Calendar.AUGUST, 31).getTime();

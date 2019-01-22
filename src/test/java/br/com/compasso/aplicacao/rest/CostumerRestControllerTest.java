@@ -103,7 +103,7 @@ public class CostumerRestControllerTest {
     @Test
     public void findCostumerByCompleteName() throws Exception {
         //Instantiate new CostumerDTO List and building objects through my CostumerObjectBuilder class
-        List<CostumerDTO> costumersList = CostumerObjectBuilder.buildCostumesWithSameCompleteName();
+        List<CostumerDTO> costumersList = CostumerObjectBuilder.buildCostumersWithSameCompleteName();
 
         //API URI and Param
         String uri = api_base_url.concat("/findByCompleteName/{CostumerName}");
@@ -222,6 +222,29 @@ public class CostumerRestControllerTest {
     }
 
     @Test
-    public void findCostumerByNameLike() {
+    public void findCostumerByNameLike() throws Exception {
+        //Instantiate new CostumerDTO List and building objects through my CostumerObjectBuilder class
+        List<CostumerDTO> costumersList = CostumerObjectBuilder.buildCostumersWithSameCompleteName();
+
+        //API URI and Param
+        String uri = api_base_url.concat("/findByNameContaining/{costumersNamePart}");
+        String uriParam = "Cordeiro";
+
+        //Tell mockito "When findCostumerByCompleteName('Yuri') method is called, it should return all costumers named by 'Yuri Cordeiro'"
+        Mockito.when(costumerService.findCostumersByNameContaining(Mockito.anyString())).thenReturn(costumersList);
+
+        //Building RequestBuilder to call Costumer's api uri by using GET method + uriParam
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(uri, uriParam);
+
+        //Building the Request and getting the mock response
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        //Getting response from MvcResult
+        MockHttpServletResponse response = result.getResponse();
+        //Getting response content
+        String outputJson = response.getContentAsString();
+
+        //Validation
+        assertEquals(outputJson, Utils.mapToJson(costumersList));
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 }

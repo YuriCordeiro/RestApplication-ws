@@ -1,10 +1,10 @@
 package br.com.compasso.aplicacao.enums;
 
-public enum Sexo {
+public enum Gender {
 
     Feminino,
     Masculino;
 
-    Sexo() {}
+    Gender() {}
 
 }

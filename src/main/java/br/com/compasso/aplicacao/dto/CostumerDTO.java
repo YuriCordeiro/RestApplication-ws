@@ -1,12 +1,15 @@
 package br.com.compasso.aplicacao.dto;
 
-import br.com.compasso.aplicacao.enums.Sexo;
+import br.com.compasso.aplicacao.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * CityDTO it's a Data Transfer Object
+ */
 @Entity
 @Table(name = "TB_COSTUMER")
 @SequenceGenerator(name = "SEQ_COSTUMER", sequenceName = "SEQ_COSTUMER", allocationSize = 1)
@@ -17,19 +20,23 @@ public class CostumerDTO {
     private Integer id;
 
     @JsonProperty("complete_name")
+    @Column(nullable = false)
     private String completeName;
 
     @Enumerated(EnumType.STRING)
-    private Sexo gender;
+    @Column(nullable = false)
+    private Gender gender;
 
     @JsonFormat(pattern = "dd/MM/yyyy", locale = "pt_BR", timezone = "GMT-03:00")
     @JsonProperty("birth_date")
+    @Column(nullable = false)
     private Date birthDate;
 
+    @Column(nullable = false)
     private Integer age;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "city_id", unique = true, updatable = false)
+    @JoinColumn(name = "city_id", unique = true, updatable = false, nullable = false)
     @JsonProperty("city")
     private CityDTO city;
 
@@ -48,7 +55,7 @@ public class CostumerDTO {
      * @param age          costumers's age
      * @param city         costumers's city
      */
-    public CostumerDTO(String completeName, Sexo gender, Date birthDate, Integer age, CityDTO city) {
+    public CostumerDTO(String completeName, Gender gender, Date birthDate, Integer age, CityDTO city) {
         this.completeName = completeName;
         this.gender = gender;
         this.birthDate = birthDate;
@@ -72,11 +79,11 @@ public class CostumerDTO {
         this.completeName = completeName;
     }
 
-    public Sexo getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Sexo gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
