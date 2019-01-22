@@ -10,14 +10,14 @@ Now you can run the main method typing `java -jar <path-to-jar-file>` like this:
 
     java -jar  Z:\...\RestApplication-ws\target\RestApplication-WS.jar
     
-It Should build and get your application running! (:   
+It Should build and get your application up to running! (:   
 
 ##
 ## Application Endpoints
 
 ### CityDTO
 
-`Find all cities`
+`If you want to see all cities registered:`
  
     URL: `http://localhost:8080/api/city/all`
     METHOD: GET
@@ -28,12 +28,9 @@ It Should build and get your application running! (:
                            "province": "SP"
                        }
                     ]
-     
-              
-    *should return a list with all cities registerd*
-
-    
-`Find cities by city's name`
+                    
+                        
+`If you want to find cities by city's name:`
     
     URL: `http://localhost:8080/api/costumer/findByName/{cityName}`
     METHOD: GET
@@ -47,7 +44,7 @@ It Should build and get your application running! (:
                            ]  
 
 
-`Find cities by city's province`
+`If you want to find cities by city's province:`
     
     URL: `http://localhost:8080/api/city/findByProvince/{province}`
     METHOD: GET
@@ -70,10 +67,11 @@ It Should build and get your application running! (:
                                   }
                               ]    
     
-`Insert new City`
+`If you want to register a new City:`
         
         URL: `http://localhost:8080/api/city/insert`
         METHOD: POST
+        HEADERS: {'Content-Type: application/json'}
         
         EXAMPLE INPUT JSON: {
                                     "id": 1,
