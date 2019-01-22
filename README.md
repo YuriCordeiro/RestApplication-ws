@@ -74,13 +74,12 @@ It Should build and get your application up to running! (:
         HEADERS: {'Content-Type: application/json'}
         
         EXAMPLE INPUT JSON: {
-                                    "id": 1,
                                     "name": "Americana",
                                     "province": "SP"
                                 }
         
         EXPECTED JSON RESPONSE: {
-                                    "id": 1,
+                                    "id": 4,
                                     "name": "Americana",
                                     "province": "SP"
                                 }
